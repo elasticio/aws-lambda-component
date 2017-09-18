@@ -4,7 +4,9 @@
 *
 * @returns Promise
 **/
-module.exports = function (credentials) {
+function verifyCredentials(credentials) {
     console.log('Credentials passed for verification %j', credentials);
     return Promise.resolve(true);
-};
+}
+
+module.exports = verifyCredentials;

@@ -3,11 +3,75 @@
   "description": "elastic.io integration component that calls out to AWS Lambda API",
   "credentials": {
     "fields": {
-      "name": {
-        "label": "My API Key",
+      "aws_access_key_id": {
+        "label": "AWS Access Key",
+        "required": true,
+        "viewClass": "TextFieldView"
+      },
+      "aws_secret_access_key": {
+        "label": "AWS Access Secret",
         "required": true,
         "viewClass": "TextFieldView"
       }
     }
+  },
+  "actions": {
+      "publish": {
+          "main": "./lib/actions/invoke.js",
+          "title": "Invoke",
+          "fields": {
+              "functionName": {
+                  "label": "FunctionName",
+                  "required": true,
+                  "viewClass": "TextFieldView",
+                  "note": "You can specify a function name (for example, Thumbnail) or you can specify Amazon Resource Name (ARN) of the function (for example, arn:aws:lambda:us-west-2:account-id:function:ThumbNail). AWS Lambda also allows you to specify a partial ARN (for example, account-id:Thumbnail). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length."
+              },
+              "region": {
+                  "label": "AWS Region",
+                  "required": true,
+                  "viewClass": "SelectView",
+                  "prompt": "Please choose",
+                  "model": {
+                      "us-east-1": "US East (N. Virginia)",
+                      "us-west-1": "US West (N. California)",
+                      "us-west-2": "US West (Oregon)",
+                      "eu-west-1": "EU (Ireland)",
+                      "eu-central-1": "EU (Frankfurt)",
+                      "ap-northeast-1": "Asia Pacific (Tokyo)",
+                      "ap-northeast-2": "Asia Pacific (Seoul)",
+                      "ap-southeast-1": "Asia Pacific (Singapore)",
+                      "ap-southeast-2": "Asia Pacific (Sydney)",
+                      "sa-east-1": "South America (Sao Paulo)"
+                  }
+              },
+              "invocationType": {
+                  "label": "Invocation Type",
+                  "required": false,
+                  "viewClass": "SelectView",
+                  "note": "By default, the Invoke API assumes RequestResponse invocation type. You can optionally request asynchronous execution by specifying Event as the InvocationType.",
+                  "model": {
+                    "RequestResponse": "RequestResponse",
+                    "Event": "Event"
+                  }
+              },
+              "logType": {
+                "label": "Log Type",
+                "required": false,
+                "viewClass": "SelectView",
+                "note": "You can set this optional parameter to Tail in the request only if you specify the InvocationType parameter with value RequestResponse. In this case, AWS Lambda returns the base64-encoded last 4 KB of log data produced by your Lambda function in the x-amz-log-result header.",
+                "model": {
+                  "None": "None",
+                  "Tail": "Tail"
+                }
+              },
+              "qualifier": {
+                "label": "Qualifier",
+                "required": false,
+                "viewClass": "TextFieldView",
+                "placeholder": "$LATEST",
+                "note": "You can use this optional parameter to specify a Lambda function version or alias name. If you specify a function version, the API uses the qualified function ARN to invoke a specific Lambda function. If you specify an alias name, the API uses the alias ARN to invoke the Lambda function version to which the alias points. If you don't provide this parameter, then the API uses unqualified function ARN which results in invocation of the $LATEST version."
+              }
+          }
+      }
   }
 }

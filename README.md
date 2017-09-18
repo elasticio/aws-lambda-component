@@ -1,7 +1,7 @@
 # aws-lambda-component [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > elastic.io integration component that calls out to AWS Lambda API
 
-# 
+#
 AWS Lambda Component component for the [elastic.io platform](http://www.elastic.io &#34;elastic.io platform&#34;)
 
 If you plan to **deploy it into [elastic.io platform](http://www.elastic.io &#34;elastic.io platform&#34;) you must follow sets of instructions to succeed**.
@@ -34,7 +34,7 @@ In the component repository you need to specify OAuth Client credentials as envi
 
 ## Known issues
 
-No known issues are there yet.
+* Invocation Type ``DryRun`` is not supported - make no sense in the context
 
 ## License
 

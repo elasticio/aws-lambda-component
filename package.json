@@ -1,0 +1,56 @@
+{
+  "name": "aws-lambda-component",
+  "version": "0.0.0",
+  "description": "elastic.io integration component that calls out to AWS Lambda API",
+  "homepage": "https://elastic.io",
+  "author": {
+    "name": "elasticio",
+    "email": "info@elastic.io",
+    "url": "https://elastic.io"
+  },
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "keywords": [
+    "ipaas",
+    "elasticio",
+    "elasticio-component",
+    "aws",
+    "lambda"
+  ],
+  "devDependencies": {
+    "eslint": "^4.1.0",
+    "eslint-config-xo-space": "^0.16.0",
+    "eslint-plugin-json": "^1.2.0",
+    "nsp": "^2.6.3",
+    "jest": "^21.0.0",
+    "jest-cli": "^21.0.0"
+  },
+  "dependencies": {
+    "elasticio-sailor-nodejs": "^2.2.0",
+    "elasticio-node": "^0.0.8",
+    "request-promise": "^4.2.1"
+  },
+  "engines": {
+    "node": "8.5.0"
+  },
+  "scripts": {
+    "pretest": "eslint . --fix",
+    "test": "NODE_ENV=test jest spec/* && jest",
+    "integration-test": "NODE_ENV=test jest spec-integration/*",
+    "prepublish": "nsp check"
+  },
+  "eslintConfig": {
+    "extends": "xo-space",
+    "env": {
+      "jest": true,
+      "node": true
+    }
+  },
+  "repository": "elasticio/aws-lambda-component",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "license": "Apache-2.0"
+}

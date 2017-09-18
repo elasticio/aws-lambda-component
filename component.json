@@ -1,0 +1,13 @@
+{
+  "title": "AWS Lambda Component",
+  "description": "elastic.io integration component that calls out to AWS Lambda API",
+  "credentials": {
+    "fields": {
+      "name": {
+        "label": "My API Key",
+        "required": true,
+        "viewClass": "TextFieldView"
+      }
+    }
+  }
+}

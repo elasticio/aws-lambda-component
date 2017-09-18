@@ -37,7 +37,7 @@
     "node": "8.5.0"
   },
   "scripts": {
-    "pretest": "eslint . --fix",
+    "pretest": "node_modules/.bin/eslint lib spec spec-integration --ext .json --ext .js --fix",
     "test": "NODE_ENV=test jest spec/*",
     "integration-test": "NODE_ENV=test jest spec-integration/*",
     "prepublish": "nsp check"

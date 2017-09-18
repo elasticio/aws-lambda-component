@@ -23,9 +23,10 @@
     "eslint": "^4.1.0",
     "eslint-config-xo-space": "^0.16.0",
     "eslint-plugin-json": "^1.2.0",
-    "nsp": "^2.6.3",
+    "eslint-plugin-mocha": "^4.11.0",
     "jest": "^21.0.0",
-    "jest-cli": "^21.0.0"
+    "jest-cli": "^21.0.0",
+    "nsp": "^2.6.3"
   },
   "dependencies": {
     "aws-sdk": "^2.117.0",

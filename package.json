@@ -35,7 +35,8 @@
     "request-promise": "^4.2.1"
   },
   "engines": {
-    "node": "8.5.0"
+    "node": "^8.4.0",
+    "npm": ">=5.4"
   },
   "scripts": {
     "pretest": "node_modules/.bin/eslint lib spec spec-integration --ext .json --ext .js --fix",

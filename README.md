@@ -28,6 +28,20 @@ In the component repository you need to specify OAuth Client credentials as envi
 
 ## Actions
 
+### Invoke lambda function
+
+If invocation was successful then action will try to parse resulting payload
+as JSON and if it is successful then action will emit a new elastic.io message
+with the resulting JSON as ``body``.
+
+If parsing of the payload after successful invocation will fail then action
+will emit a new message with a following body:
+```json
+{
+  "result": "payload from the lambda invocation"
+}
+```
+
 
 ## Triggers
 

@@ -44,6 +44,16 @@
                       "sa-east-1": "South America (Sao Paulo)"
                   }
               },
+              "invocationType": {
+                  "label": "Invocation Type",
+                  "required": false,
+                  "viewClass": "SelectView",
+                  "note": "By default, the Invoke API assumes RequestResponse invocation type. You can optionally request asynchronous execution by specifying Event as the InvocationType.",
+                  "model": {
+                    "RequestResponse": "RequestResponse",
+                    "Event": "Event"
+                  }
+              },
               "logType": {
                 "label": "Log Type",
                 "required": false,

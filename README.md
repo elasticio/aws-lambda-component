@@ -29,13 +29,17 @@ as JSON and if parsing was successful then action will emit a new elastic.io mes
 with the resulting JSON as ``body``.
 
 If JSON parsing of the payload after successful invocation will fail then action
-will emit a new message with a following body:
+will emit the elastic.io message with body equal to ``AWS.Response``, like this:
 
 ```json
 {
-  "result": "payload from the lambda invocation"
+  "StatusCode": 200,
+  "Payload": "result from the lambda invocation"
 }
 ```
+
+If ``LogType`` was set to ``Tail`` then returned (last 4 KB of log) that is returned with the
+response will be logged out to compoentn log standard output (and visible in the elastic.io log)
 
 ## Triggers
 

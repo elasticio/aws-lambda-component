@@ -5,7 +5,7 @@ const assert = require('assert');
 
 describe('Given invoke action', function () {
 
-    describe('and lambda function returning string', () => {
+    describe('and lambda with RequestReponse function returning string', () => {
         beforeEach(() => {
             AWS.mock('Lambda', 'invoke', function (params, callback) {
                 assert.deepStrictEqual(params, {
@@ -18,6 +18,7 @@ describe('Given invoke action', function () {
                     Qualifier: '$LATEST'
                 });
                 callback(null, {
+                    StatusCode: 200,
                     Payload: 'Hello world'
                 });
             });
@@ -33,7 +34,8 @@ describe('Given invoke action', function () {
             }).then((result) => {
                 assert.ok(result);
                 assert.deepEqual(result.body, {
-                    result: 'Hello world'
+                    StatusCode: 200,
+                    Payload: 'Hello world'
                 });
             });
         });
@@ -41,7 +43,7 @@ describe('Given invoke action', function () {
         afterEach(() => AWS.restore());
     });
 
-    describe('and lambda function returning JSON', () => {
+    describe('and lambda with RequestReponse function returning JSON', () => {
         beforeEach(() => {
             AWS.mock('Lambda', 'invoke', function (params, callback) {
                 assert.deepStrictEqual(params, {
@@ -54,6 +56,7 @@ describe('Given invoke action', function () {
                     Qualifier: '$LATEST'
                 });
                 callback(null, {
+                    StatusCode: 200,
                     Payload: JSON.stringify({
                         message: 'Hello world!'
                     })
@@ -70,9 +73,45 @@ describe('Given invoke action', function () {
                 functionName: 'foo'
             }).then((result) => {
                 assert.ok(result);
-                console.log(result.body);
                 assert.deepEqual(result.body, {
                     message: 'Hello world!'
+                });
+            });
+        });
+
+        afterEach(() => AWS.restore());
+    });
+
+    describe('and lambda with Event function returning JSON', () => {
+        beforeEach(() => {
+            AWS.mock('Lambda', 'invoke', function (params, callback) {
+                assert.deepStrictEqual(params, {
+                    FunctionName: 'bar',
+                    InvocationType: 'Event',
+                    LogType: 'None',
+                    Payload: JSON.stringify({
+                        start: 'the action'
+                    }),
+                    Qualifier: '$LATEST'
+                });
+                callback(null, {
+                    StatusCode: 200
+                });
+            });
+        });
+
+        it('should execute a call with JSON response', function () {
+            return action.process({
+                body: {
+                    start: 'the action'
+                }
+            }, {
+                functionName: 'bar',
+                invocationType: 'Event'
+            }).then((result) => {
+                assert.ok(result);
+                assert.deepEqual(result.body, {
+                    StatusCode: 200
                 });
             });
         });

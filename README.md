@@ -13,20 +13,29 @@ instructions on how to generate them.
 
 ## Actions
 
-### Invoke lambda function
+### Invoke a lambda function
+
+This action will invoke a AWS Lambda function. It has following configuration parameters:
+
+![image](https://user-images.githubusercontent.com/56208/30599821-f96ad14a-9d5d-11e7-8be9-de69acb38fe5.png)
+
+Please refer to the [AWS Lambda documentation](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) for 
+more information about the parameters.
+
+Action supports returning JSON value as result.
 
 If invocation was successful then action will try to parse resulting payload
-as JSON and if it is successful then action will emit a new elastic.io message
+as JSON and if parsing was successful then action will emit a new elastic.io message
 with the resulting JSON as ``body``.
 
-If parsing of the payload after successful invocation will fail then action
+If JSON parsing of the payload after successful invocation will fail then action
 will emit a new message with a following body:
+
 ```json
 {
   "result": "payload from the lambda invocation"
 }
 ```
-
 
 ## Triggers
 

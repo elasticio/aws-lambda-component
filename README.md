@@ -41,9 +41,6 @@ will emit the elastic.io message with body equal to ``AWS.Response``, like this:
 If ``LogType`` was set to ``Tail`` then returned (last 4 KB of log) that is returned with the
 response will be logged out to compoentn log standard output (and visible in the elastic.io log)
 
-## Triggers
-
-
 ## Known issues
 
 * Invocation Type ``DryRun`` is not supported - make no sense in the context

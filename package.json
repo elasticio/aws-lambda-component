@@ -44,8 +44,7 @@
   "scripts": {
     "pretest": "node_modules/.bin/eslint lib spec spec-integration verifyCredentials.js --ext .json --ext .js --fix",
     "test": "NODE_ENV=test jest spec/*",
-    "integration-test": "NODE_ENV=test jest spec-integration/*",
-    "prepublish": "nsp check"
+    "integration-test": "NODE_ENV=test jest spec-integration/*"
   },
   "eslintConfig": {
     "extends": "xo-space",

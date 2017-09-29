@@ -17,10 +17,12 @@ instructions on how to generate them.
 
 This action will invoke a AWS Lambda function. It has following configuration parameters:
 
-![image](https://user-images.githubusercontent.com/56208/30599821-f96ad14a-9d5d-11e7-8be9-de69acb38fe5.png)
+![image](https://user-images.githubusercontent.com/56208/30986933-79239550-a495-11e7-968e-c17b49036385.png)
 
 Please refer to the [AWS Lambda documentation](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) for 
 more information about the parameters.
+
+Incoming JSON can be adjusted using the *JSONata Expression* field. Please make sure result of evaluation is a valid JSON.
 
 Action supports returning JSON value as result.
 

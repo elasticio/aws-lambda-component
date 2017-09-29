@@ -1,4 +1,4 @@
-
+'use strict';
 /**
 * This function will be called by the platform to verify given credentials
 *

@@ -1,15 +1,29 @@
 # aws-lambda-component [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> elastic.io integration component that calls out to AWS Lambda API
 
-#
-AWS Lambda Component component for the [elastic.io platform](http://www.elastic.io &#34;elastic.io platform&#34;)
+## Description
 
-If you plan to **deploy it into [elastic.io platform](http://www.elastic.io &#34;elastic.io platform&#34;) you must follow sets of instructions to succeed**.
+An integration component that calls out to Amazon AWS Lambda API.
 
-## Authentication
+## Requirements
 
-Authentication is implemented using AWS Security Key and AWS Security Secret. [Here](http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-your-credentials.html) you should be able to find 
-instructions on how to generate them.
+### Environment variables
+
+None required.
+
+## Credentials
+
+The component requires the following credentials to authenticate with the AWS services:
+
+*   `AWS Access Key` - this is your Access Key ID when you created the AWS account
+*   `AWS Access Secret` - this is your Secret access key given to you during the key creation
+
+These keys are displayed only once, just after the creation of the credentials in AWS.
+To generate new ones follow the instructions given at [Getting Your Credentials](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-your-credentials.html) page.
+
+## Triggers
+
+This component has no trigger functions. This means it will not be accessible to
+select as a first component during the integration flow design.
 
 ## Actions
 
@@ -19,19 +33,20 @@ This action will invoke a AWS Lambda function. It has following configuration pa
 
 ![image](https://user-images.githubusercontent.com/56208/30986933-79239550-a495-11e7-968e-c17b49036385.png)
 
-Please refer to the [AWS Lambda documentation](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) for 
+Please refer to the [AWS Lambda documentation](http://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html) for
 more information about the parameters.
 
-Incoming JSON can be adjusted using the *JSONata Expression* field. Please make sure result of evaluation is a valid JSON.
+Incoming JSON can be adjusted using the *JSONata Expression* field. Please make
+sure result of evaluation is a valid JSON.
 
 Action supports returning JSON value as result.
 
-If invocation was successful then action will try to parse resulting payload
-as JSON and if parsing was successful then action will emit a new elastic.io message
-with the resulting JSON as ``body``.
+If invocation was successful then action tries to parse resulting payload
+as `JSON` and if parsing was successful then action emits a new message
+with the resulting JSON as `body`.
 
-If JSON parsing of the payload after successful invocation will fail then action
-will emit the elastic.io message with body equal to ``AWS.Response``, like this:
+If JSON parsing of the payload after successful invocation fails then action emits the
+message with body equal to `AWS.Response`, like this:
 
 ```json
 {
@@ -40,12 +55,13 @@ will emit the elastic.io message with body equal to ``AWS.Response``, like this:
 }
 ```
 
-If ``LogType`` was set to ``Tail`` then returned (last 4 KB of log) that is returned with the
-response will be logged out to compoentn log standard output (and visible in the elastic.io log)
+If `LogType` was set to `Tail` then the last 4 KB of the log will be returned
+with the response and will be logged out to component log standard output (and
+visible in the platform log)
 
 ## Known issues
 
-* Invocation Type ``DryRun`` is not supported - make no sense in the context
+*   Invocation Type ``DryRun`` is not supported - make no sense in the context
 
 ## License
 

@@ -1,12 +1,12 @@
-'use strict';
 /**
 * This function will be called by the platform to verify given credentials
 *
 * @returns Promise
-**/
+* */
+// eslint-disable-next-line no-unused-vars
 function verifyCredentials(credentials) {
-    console.log('Credentials passed for verification %j', credentials);
-    return Promise.resolve(true);
+  this.logger.info('Verify Credentials started');
+  return Promise.resolve(true);
 }
 
 module.exports = verifyCredentials;

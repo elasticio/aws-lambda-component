@@ -1,5 +1,6 @@
-# aws-lambda-component [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+[![CircleCI](https://circleci.com/gh/elasticio/aws-lambda-component.svg?style=svg)](https://circleci.com/gh/elasticio/aws-lambda-component)
 
+# aws-lambda-component 
 ## Description
 
 An integration component that calls out to Amazon AWS Lambda API.

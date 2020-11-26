@@ -1,6 +1,7 @@
 {
   "title": "AWS Lambda",
   "description": "elastic.io integration component that calls out to AWS Lambda API",
+  "buildType": "docker",
   "credentials": {
     "fields": {
       "aws_access_key_id": {

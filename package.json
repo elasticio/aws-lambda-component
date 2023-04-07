@@ -1,6 +1,5 @@
 {
   "name": "aws-lambda-component",
-  "version": "1.0.1",
   "description": "elastic.io integration component that calls out to AWS Lambda API",
   "homepage": "https://elastic.io",
   "author": {
